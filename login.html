@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<!--
+	Horizons by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Login</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="right-sidebar">
+
+		<!-- Header -->
+			<div id="header">
+				<div class="container">
+						
+					<!-- Logo -->
+						<h1><a href="index.html"><img src="images/logo.png" width=400px></a></h1>
+					
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li><a href="left-sidebar.html">About Us</a></li>
+								<li>
+									<a href="">Services</a>
+									<ul>
+										<li><a href="#">Bartending</a></li>
+										<li><a href="#">Catering</a></li>
+										<li><a href="#">Entertainment</a></li>
+										<li><a href="">Photography</a></li>
+									</ul>
+								</li>
+								<li><a href="right-sidebar.html">Testimonials</a></li>
+								<li><a href="no-sidebar.html">Contact Us</a></li>
+							</ul>
+						</nav>
+
+				</div>
+			</div>
+
+		<!-- Main -->
+		<div>
+			<!--creating login and register form-->
+			<div class="login-page" id="login">
+				<div class="form-box">
+					<div class="form">
+						<form method="get" action="login.php" class="login-form">
+							<center class="center"><hl class="main-heading">Login Form</hl></center>
+							<input type="text" placeholder="username" class="form login" name="username" required/>
+							<input type="password" placeholder="password" class="form login" name="password" required/>
+							<input type="submit" class="button small" value="Login"/>
+							<p class="asking">Not Registered? <a href="#login">Register</a></p>
+						</form>
+						<form method="get" action="register.php" class="register-form">
+							<center><h1 class="main-heading">Register Form</h1></center>
+							<input type="text" placeholder="username" class="form login" name="newuser" required/>
+							<input type="text" placeholder="email-id" class="form login" name="email"/>
+							<input type="password" placeholder="password" class="form login" name="newpass" required/>
+							<input type="submit" class="button small" value="Register"/>
+							<p class="asking">Already Registered? <a href="#login">Login</a></p>
+						</form>
+					</div>
+				</div> <br><br><br>
+			</div>
+		</div>
+		
+		<!--this script animate the switch between login form and register form-->
+		<script>
+			var modal = document.getElementById("login-form");
+			window.onclick = function(event)
+			{
+				if (event.target == modal)
+				{
+					modal.style.display = "none";
+				}
+			}
+		</script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script>
+			$('.asking a').click(function()
+			{$('form').animate({height: "toggle",opacity: "toggle"},"slow");});
+		</script>
+
+		<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+
+					<!-- Lists -->
+						<div class="row">
+							<div class="8u">
+								<section>
+									<header class="major">
+										<h2>Donec dictum metus</h2>
+										<span class="byline">Quisque semper augue mattis wisi maecenas ligula</span>
+									</header>
+									<div class="row">
+										<section class="6u">
+											<ul class="default">
+												<li><a href="#">Pellentesque elit non gravida blandit.</a></li>
+												<li><a href="#">Lorem ipsum dolor consectetuer elit.</a></li>
+												<li><a href="#">Phasellus nibh pellentesque congue.</a></li>
+												<li><a href="#">Cras vitae metus aliquam  pharetra.</a></li>
+											</ul>
+										</section>
+										<section class="6u">
+											<ul class="default">
+												<li><a href="#">Pellentesque elit non gravida blandit.</a></li>
+												<li><a href="#">Lorem ipsum dolor consectetuer elit.</a></li>
+												<li><a href="#">Phasellus nibh pellentesque congue.</a></li>
+												<li><a href="#">Cras vitae metus aliquam  pharetra.</a></li>
+											</ul>
+										</section>
+									</div>
+								</section>
+							</div>
+							<div class="4u">
+								<section>
+									<header class="major">
+										<h2>Donec dictum metus</h2>
+										<span class="byline">Mattis wisi maecenas ligula</span>
+									</header>
+									<ul class="contact">
+										<li>
+											<span class="address">Address</span>
+											<span>1234 Somewhere Road #4285 <br />Nashville, TN 00000</span>
+										</li>
+										<li>
+											<span class="mail">Mail</span>
+											<span><a href="#">someone@untitled.tld</a></span>
+										</li>
+										<li>
+											<span class="phone">Phone</span>
+											<span>(000) 000-0000</span>
+										</li>
+									</ul>	
+								</section>
+							</div>
+						</div>
+
+					<!-- Copyright -->
+						<div class="copyright">
+							Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+						</div>
+
+				</div>
+			</div>
+
+	</body>
+</html>
