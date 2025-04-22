@@ -97,7 +97,7 @@
 		margin: 0;
 		padding: 0;
 		font-size: 3em;
-		font-weight: 600;
+		font-weight: 600; 
 	}
 
 	header .byline {
@@ -889,42 +889,107 @@ General syle*/
 	margin: 0 auto;
 	padding: 20px;
 }
-.ServiceDetails-page .bartending-option img, .ServiceDetails-page .catering-option img, .ServiceDetails-page .entertainment-option img, .ServiceDetails-page .photography-option img{
-	width: 69%;
-	min-width: 400px;
-	height: auto;
-	border-radius: 50px;
-	
+ 
 
+/*Updated code for Service-Details page*/
+/*Flip Card design*/
+
+.card-grid{
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+	flex-wrap: warp;
+	padding: 20px 0;
 	
 }
-.ServiceDetails-page .bartending-option, .ServiceDetails-page .catering-option, .ServiceDetails-page .entertainment-option, .ServiceDetails-page .photography-option{
-	display: flex;
-	justify-content: flex-start;
-	align-items:center;/*design how the text information appears next to the image can change to center to show infor more lower then the image*/
-	margin-bottom: 10px;
-	gap: 0;
+.flip-card{
+	background-color: transparent; /*change to transparent*/
+	width: 355px;
+	height: 450px;
+	perspective: 1000px;
+	cursor: pointer;
+	
 }
-.ServiceDetails-page .bartending-option .info, .ServiceDetails-page .catering-option .info, .ServiceDetails-page .entertainment-option .info, .ServiceDetails-page .photography-option .info{
-	color:#00378C;
-	max-width: 150%;
+.flip-card-inner{
+	position: relative;
 	width: 100%;
-	text-align: left;
-	padding-left: 0;
-	
-	overflow-wrap: break-word;
-	display: flex;
-	flex-direction: column;
 	height: 100%;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+
 }
-/*customize information section bullet points*/
-.ServiceDetails-page .bartending-option .info ul, .catering-option .info ul, .entertainment-option .info ul, .photography-option .info ul {
-	list-style: square;
-	padding-left: 1px;
-	margin: 10px 0;
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
 }
-.ServiceDetails-page .bartending-option .info ul li::marker, .catering-option .info ul li::marker, .entertainment-option .info ul li::marker, .photography-option .info ul li::marker {
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;/* changes corners*/
+  backface-visibility: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color:#85BDE0; /*#ffffff; */
+  padding: 20px;
+}
+
+.flip-card-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #00378C;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+.flip-card-back img {
+  width: 120%;
+  height: auto;
+  border-radius: 20px;
+}
+/* Package text styling*/
+.card-content{
+	text-align: left;
+}
+.card-title{
+	text-align: center;
 	font-size: 1.2em;
-	line-height: 1.5em;
-	color:#1F1DF1;
+	
+}
+.card-content ul {
+  padding-left: 1.2em;
+  list-style-position: inside;
+}
+
+.card-content li {
+  margin-bottom: 8px;
+  /*list-style-type: circle;*/
+  color: white;
+}
+/* Mobile-friendly modifications */
+@media (max-width: 768px) {
+  .card-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flip-card {
+    width: 90%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .flip-card-inner,
+  .flip-card-front,
+  .flip-card-back {
+    height: 100%;
+  }
+
+  .flip-card-back img {
+    max-height: 300px;
+    object-fit: cover;
+  }
 }
