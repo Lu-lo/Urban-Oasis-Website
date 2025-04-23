@@ -519,6 +519,7 @@
 				color: #FFF;
 				text-decoration: none;
 				font-size: 1.2em;
+				font-weight: bold;
 			}
 
 			#nav > ul > li:first-child {
@@ -526,7 +527,7 @@
 			}
 
 			#nav > ul > li:hover a {
-				color: #fff;
+				color: #42B2E8; 
 			}
 
 			#nav > ul > li.active {
@@ -534,7 +535,7 @@
 			}
 
 				#nav > ul > li.active a {
-					color: white;
+					color: #42B2E8;
 				}
 
 			#nav > ul > li > ul {
@@ -561,10 +562,11 @@
 			.dropotron > li > a {
 				color: #FFF;
 				text-decoration: none;
+				font-weight: bold;
 			}
 
 			.dropotron > li.active > a, .dropotron > li:hover > a {
-				color: #FFF;
+				color: #42B2E8;
 			}
 
 		.dropotron.level-0 {
