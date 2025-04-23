@@ -11,8 +11,11 @@
 	$username = $_REQUEST["newuser"];
 	$password = $_REQUEST["newpass"];	
     // $email = $_REQUEST["email"]
+    //encrypt password
+    $hash = password_hash($password, PASSWORD_DEFAULT); 
 
-	$mysqli = new mysqli ("localhost", "root", "root", "userdb");
+	// $mysqli = new mysqli ("localhost", "root", "root", "userdb");
+    require 'db.php';
 								
 	if ($mysqli->connect_error) {
 		print "Error is: " . $mysqli->connect_error;
@@ -34,7 +37,7 @@
     // otherwise, add new user to db
     else {
         $stmt = $mysqli->prepare( "INSERT INTO user (username, password) VALUES (?, ?)" );
-	    $stmt->bind_param("ss", $username, $password);
+	    $stmt->bind_param("ss", $username, $hash);
         $success = $stmt->execute();
     }
 
@@ -44,7 +47,7 @@
     else {
         // select new user's id and assign session variables
         $stmt = $mysqli->prepare("SELECT userid FROM user WHERE username = ? AND password =?");
-        $stmt->bind_param("ss", $username, $password);
+        $stmt->bind_param("ss", $username, $hash);
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($id);
