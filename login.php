@@ -8,39 +8,59 @@
 <?php
     // get username and password from html form
     $username = $_REQUEST["username"];
-    $password = $_REQUEST["password"];		
+    $password = $_REQUEST["password"];	
+    $hash = password_hash($password, PASSWORD_DEFAULT); 
 
     session_start();
-	$mysqli = new mysqli ("localhost", "root", "root", "userdb");
-	
+	//$mysqli = new mysqli ("localhost", "root", "root", "userdb");
+    require 'db.php';
+    
     // if sql fails to connect, print error
 	if ($mysqli->connect_error) {
 		print "Error is: " . $mysqli->connect_error;
 		exit();
 	}
 
-    // search for matching username and password pair in db
-    $stmt = $mysqli->prepare("SELECT userid FROM user WHERE username = ? AND password =?");
-    $stmt->bind_param("ss", $username, $password);
+    // search for matching username in db
+    $stmt = $mysqli->prepare("SELECT userid FROM user WHERE username = ?");
+    $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->store_result();
-
-    // if user is found, start session and direct to main page
+    
+    // if user is found, retrieve encrypted password from db
     if($stmt->num_rows > 0) {
-        $stmt->bind_result($id);
-        $stmt->fetch();
+        $req = $mysqli->prepare("SELECT password FROM user WHERE username = ?");
+        $req->bind_param("s", $username);
+        $req->execute();
+        $req->store_result();
+        $req->bind_result($ver);
+        $req->fetch();
 
-        $_SESSION['loggedin'] = true;
-        $_SESSION['id'] = $id;
-        $_SESSION['username'] = $username;
+        // check for password match
+        if (password_verify($password, $ver)) {
+            // if password matches, start session and redirect to main page
+            $stmt->bind_result($id);
+            $stmt->fetch();
 
-        header("Location: main.php");
-        exit();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['id'] = $id;
+            $_SESSION['username'] = $username;
 
+            header("Location: main.php");
+            exit();
+        }
+        //otherwise, redirect to error screen
+        else {
+            header("location: error.html");
+            exit();
+        }
     }
-    // otherwise, print error message
+
     else {
-        print "Error! Invalid credentials";
+        echo "$ver";
+        echo "$hash";
+        echo(password_verify($ver, $hash));
+        print "Error! Invalid credentials2";
         exit();
     }
 
