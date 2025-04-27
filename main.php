@@ -61,7 +61,14 @@ else {
 					<li><a href="contact-us.html">Contact Us</a></li>
 				</ul>
 			</nav>
-
+<!-- login display -->
+			<div style="text-align: right; margin-top: 10px;">
+			<?php
+			if (isset($username)) {
+			echo "Welcome, " . htmlspecialchars($username) . " | <form style='display:inline;' action='logout.php' method='post'><button type='submit' style='background:none;border:none;color:blue;cursor:pointer;'>Logout</button></form>";
+			}
+			?>
+			</div>	<!-- updated information -->
 		</div>
 	</div>
 
