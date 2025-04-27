@@ -12,7 +12,7 @@ session_start();
 
 // if there is no logged in session, redirect to login page
 if (!isset($_SESSION['loggedin'])) {
-	header('Location: index.html');
+	header('Location: login.html');
 	exit();
 }
 
@@ -47,7 +47,11 @@ else {
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li><a href="index.html">Home</a></li>
+					<li><a href="index.html">Home</a>
+						<ul>
+							<li><a href="main.php">Dashboard</a></li>
+						</ul>
+					</li>
 					<li><a href="left-sidebar.html">About Us</a></li>
 					<li>
 						<a href="Services.html">Services</a>
@@ -61,14 +65,6 @@ else {
 					<li><a href="contact-us.html">Contact Us</a></li>
 				</ul>
 			</nav>
-<!-- login display -->
-			<div style="text-align: right; margin-top: 10px;">
-			<?php
-			if (isset($username)) {
-			echo "Welcome, " . htmlspecialchars($username) . " | <form style='display:inline;' action='logout.php' method='post'><button type='submit' style='background:none;border:none;color:blue;cursor:pointer;'>Logout</button></form>";
-			}
-			?>
-			</div>	<!-- updated information -->
 		</div>
 	</div>
 
