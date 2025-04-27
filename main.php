@@ -17,7 +17,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 
 //open sql connection
-$mysqli = new mysqli ("localhost", "root", "root", "userdb");
+$mysqli = new mysqli ("localhost", "dbuser", "password", "userdb");
 								
 if ($mysqli->connect_error) {
     print "Error is: " . $mysqli->connect_error;
