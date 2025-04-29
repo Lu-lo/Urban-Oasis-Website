@@ -14,7 +14,6 @@
     //encrypt password
     $hash = password_hash($password, PASSWORD_DEFAULT); 
 
-	// $mysqli = new mysqli ("localhost", "root", "root", "userdb");
     require 'db.php';
 								
 	if ($mysqli->connect_error) {
