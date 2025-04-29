@@ -12,7 +12,6 @@
     $hash = password_hash($password, PASSWORD_DEFAULT); 
 
     session_start();
-	//$mysqli = new mysqli ("localhost", "root", "root", "userdb");
     require 'db.php';
     
     // if sql fails to connect, print error
@@ -55,12 +54,9 @@
             exit();
         }
     }
-
+    // if no user is found, redirect to error screen
     else {
-        echo "$ver";
-        echo "$hash";
-        echo(password_verify($ver, $hash));
-        print "Error! Invalid credentials2";
+        header("location: error.html");
         exit();
     }
 
